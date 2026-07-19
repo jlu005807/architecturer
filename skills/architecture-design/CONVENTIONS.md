@@ -124,3 +124,13 @@ refactor: 简要说明（非新增内容的重构）
 - 遇到无法确定的信息（规模、约束、质量属性优先级等）**必须向用户询问**，不可自行假设
 - 参考原型只放查证过的真实链接，不编造 URL
 - 每个设计必须回答「为什么」和「它在换取什么」
+
+## 领域速查文件维护
+
+`references/domains/` 下的领域速查文件（web-and-product, transactional, ai-native, realtime-and-storage, embedded-industrial, agent-and-org, signals, glossary）来自上游 [architecture-copilot](https://github.com/study8677/architecture-copilot) 的快照。
+
+维护规则：
+- 这些文件是上游的**裁剪快照**，只包含「关键决策 / 反模式 / 演进信号」三节
+- **上游是唯一权威源**。需要完整 14 节模板时，指引用户去上游
+- 更新时只同步三节的实质变化，不要扩展为上游的镜像
+- 发现与上游冲突时，以上游为准
