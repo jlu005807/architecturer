@@ -13,6 +13,8 @@
 | 01 | [01-url-shortener.md](01-url-shortener.md) | 短链接服务 | Bitly、TinyURL、t.co | 读多写少、极致可用、全局唯一 ID |
 | 02 | [02-ai-chat-product.md](02-ai-chat-product.md) | AI 对话产品 | Claude、ChatGPT、Gemini | GPU 算力稀缺、流式输出、连续批处理、RAG、Agent 循环 |
 | 03 | [03-ecommerce-platform.md](03-ecommerce-platform.md) | 电商平台 | Amazon、Shopify、淘宝 | 读写分级一致性、库存防超卖、大促削峰、事件驱动扇出 |
+| 04 | [04-payment-system.md](04-payment-system.md) | 支付系统 | Stripe、支付宝、微信支付 | 正确性压倒一切、幂等、复式记账、未知态处理、对账兜底 |
+| 05 | [05-group-chat-im.md](05-group-chat-im.md) | 实时通讯 / 群聊 IM | WhatsApp、微信、Slack、Discord、Signal | 海量有状态长连接 + 路由表、序号保序、ack/重试/去重三件套、扇出消解、客户端副本、presence 最终一致 |
 
 ## 模板标准结构
 

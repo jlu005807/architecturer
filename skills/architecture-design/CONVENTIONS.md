@@ -7,12 +7,27 @@
 **SKILL.md 永远不维护目录列表。** 章节和模板的索引由各自的 INDEX.md 管理：
 
 ```
-SKILL.md              → 只放指令（角色、流程、原则），不放目录
+SKILL.md              → 只放指令（角色、判断流程、追问纪律、原则），不放目录
+COACHING.md           → 交互行为规范（教练七阶段、铁律、追问话术）
+TEMPLATE.md           → 14 节输出模板
 references/INDEX.md   → 管理所有参考章节的索引
 templates/INDEX.md    → 管理所有架构模板的索引
 ```
 
-无论后续增加多少内容，SKILL.md 的行数应保持 < 200 行。
+**行数上限：SKILL.md < 250 行。** 逼近上限时先精简，再新增——精简的三条思路：
+
+1. **表格降级为行内枚举**：细节在 references 有完整版的（如质量属性度量、模式对照），主文件只留名称 + 一句话
+2. **合并语义重复的块**：如「想加强→往往牺牲」表与「经典冲突对」列表说的是同一批冲突，合并成一个
+3. **判断内容归属**：知识性内容（为什么、案例、推演）进 references；工具性内容（怎么做、检查清单）才留 SKILL.md
+
+### 内容归属速查
+
+| 内容类型 | 去哪 |
+|---------|------|
+| 判断流程、检查清单、陷阱清单、追问话术 | SKILL.md（精炼版） |
+| 教练交互规范、阶段流程、领域映射 | COACHING.md |
+| 原理推演、案例、完整对照表、度量方式 | references/XX |
+| 具体系统的 14 节设计 | templates/XX |
 
 ---
 
@@ -127,7 +142,7 @@ refactor: 简要说明（非新增内容的重构）
 
 ## 领域速查文件维护
 
-`references/domains/` 下的领域速查文件（web-and-product, transactional, ai-native, realtime-and-storage, embedded-industrial, agent-and-org, signals, glossary）来自上游 [architecture-copilot](https://github.com/study8677/architecture-copilot) 的快照。
+`references/domains/` 下的领域速查文件（web-and-product, transactional, ai-native, realtime-and-storage, embedded-industrial, agent-and-org）来自上游 [architecture-copilot](https://github.com/study8677/architecture-copilot) 的快照。术语表和升级信号已整合至附录（appendix-glossary.md、appendix-signals.md）。
 
 维护规则：
 - 这些文件是上游的**裁剪快照**，只包含「关键决策 / 反模式 / 演进信号」三节
