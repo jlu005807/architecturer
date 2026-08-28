@@ -19,6 +19,12 @@
 | 07 | [07-system-design-methodology.md](07-system-design-methodology.md) | 从 0 到 1 设计系统：实战方法论 | 八步流程、信封背面估算锚点、先粗后细、架构迭代、短链接实战推演 |
 | 08 | [08-architecture-decision-records.md](08-architecture-decision-records.md) | 架构决策记录与演进 | ADR 模板六块、演进式架构/接缝、技术债管理、康威定律、升级判断两把尺子 |
 | 09 | [09-architecture-taste.md](09-architecture-taste.md) | 架构品味：框架之外的差距 | 品味五面向、小团队默认审美五条、创新代币、大公司审美流派、练品味五件事 |
+| 10 | [10-distributed-systems-hard-truths.md](10-distributed-systems-hard-truths.md) | 分布式系统的硬道理：部分失败、时间与共识 | 单机三奢侈/灰色失败、一致性四档光谱、PACELC、逻辑时钟、共识别滥用、exactly-once 幻觉+幂等、GitHub 43 秒分区案例 |
+| 11 | [11-data-consistency-engineering.md](11-data-consistency-engineering.md) | 数据一致性工程：没有跨服务事务怎么把数据弄对 | 2PC 代价、Saga（补偿≠回滚/编排 vs 编舞）、双写→Outbox（at-least-once+幂等）、幂等三件套、事件溯源、CQRS、expand-contract 契约演进、DoorDash Cadence 案例 |
+| 12 | [12-resilience-engineering.md](12-resilience-engineering.md) | 为失败而设计：韧性工程 | MTBF→MTTR 思维翻转、级联失败三放大器、爆炸半径（舱壁/cell/shuffle sharding）、熔断/超时预算/降载、退避+抖动重试、优雅降级、SLI/SLO/SLA 与错误预算、混沌工程、三大真实事故案例 |
+| 13 | [13-scaling-mechanics.md](13-scaling-mechanics.md) | 规模化的力学：加机器不是免费的 | 垂直 vs 水平/无状态好扩、范围 vs 哈希分片与一致性哈希+虚拟节点、热点（把一个点变成一片）、多级缓存与踩踏、多区域多活、尾延迟扇出放大与对冲请求、排队论/USL、Discord/Twitter/Tail at Scale 案例 |
+
+> **01–09 是入门篇**（看懂系统、从 0 设计中小系统）；**10 起是进阶篇**（系统做大做关键后才露牙的硬骨头：分布式、失败、规模、演进和组织）。
 
 ## 附录
 
@@ -26,6 +32,7 @@
 |------|------|
 | [appendix-glossary.md](appendix-glossary.md) | 架构术语表：一句话直觉 + 指向讲透它的章节，按规模/数据/扩展/模式/可靠性/流程分类 |
 | [appendix-signals.md](appendix-signals.md) | 升级信号速查：数据层/体验层/稳定性/组织效率四层量化触发信号 + 破解手段 |
+| [appendix-reflexes.md](appendix-reflexes.md) | 条件反射自查卡：触发场景→条件反射（估算选型/数据一致性/扩展韧性/沟通决策四组 + 决策前三问），源自十轮拷问复盘 |
 
 ## 领域速查（教练阶段 5 按需加载）
 

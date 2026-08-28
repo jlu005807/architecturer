@@ -217,6 +217,10 @@ description: >-
 - **先落库、再投递**：不是「为了不丢所以落库」，而是「**先让它成为确定的事实，投递才可以是能失败任意多次的尝试**」。任何写-投递链路（消息、通知、支付回调、事件）都适用
 - **幂等三要素**：一切会被重试的写操作都要幂等。键由**调用方生成、重试复用**（服务端生成则每次重试都是新键，永远去不重）；靠**唯一约束去重**（先查后写有竞态）；键是「**这一次动作的身份证**」（下单请求号、订单号+支付单号），不是金额/库存数量
 - **读写形态冲突时用两套存储**：主存储按主路径的形态分片，派生存储（搜索索引/报表）按各自形态组织，异步同步、可重建（CQRS）。**不要为 1% 的查询需求毁掉 99% 的主路径**
+- **分布式硬道理（进阶篇）**：默认每次跨网络调用都可能失败/超时/重复；一致性是有价目表的光谱，**平时 99% 的时间也在拿延迟换一致（PACELC）**；共识最贵只留给全局唯一（选主/元数据/锁）；传递层没有 exactly-once，**至少一次+消费端幂等**才是效果上的恰好一次。详见 [10 章](references/10-distributed-systems-hard-truths.md)
+- **跨服务一致性（进阶篇）**：跨服务强事务是奢望（2PC 同步阻塞/协调者单点）→ **Saga**（拆本地事务+反向补偿，补偿≠回滚）；「改库+发消息」必用 **Outbox**（同一本地事务，at-least-once 必配幂等消费）；**重试和幂等必须成对出现**；契约演进走 expand-contract（扩展→双写→收缩），永不做一步到位的破坏性变更。详见 [11 章](references/11-data-consistency-engineering.md)
+- **韧性工程（进阶篇）**：预设一定会出事，杠杆在 **MTTR**（坏了多快恢复）不在 MTBF；**慢比宕机更致命**（级联失败三放大器：资源耗尽/重试风暴/超时堆叠）→ 隔离爆炸半径（舱壁：核心与非核心隔开）、熔断三态、超时预算递减、降载丢车保帅；重试必须退避+抖动+预算+幂等；降级预案风平浪静时埋好；没演练过的容灾约等于没有。详见 [12 章](references/12-resilience-engineering.md)
+- **规模化力学（进阶篇）**：加机器不免费也不均匀（无状态近乎免费、有状态贵得吓人，先把状态从计算里挤出去）；一致性哈希+虚拟节点让加减节点只搬 1/N；**热点=把一个点变成一片**（加盐/本地缓存/副本/请求合并）；扇出放大让整体 p99 趋近子调用 p999（对冲请求）；利用率逼近 100% 排队爆炸，留余量是设计；USL 协调开销让加机器收益递减。详见 [13 章](references/13-scaling-mechanics.md)
 
 ## 演进与技术债
 
@@ -231,7 +235,7 @@ description: >-
 
 - 教程章节：`references/01~07`（按编号系统学习）
 - 领域速查：`references/domains/web-and-product` `transactional` `ai-native` `realtime-and-storage` `embedded-industrial` `agent-and-org`（按系统类型按需读取）
-- 通用工具：[appendix-glossary.md](references/appendix-glossary.md)（术语对齐）、[appendix-signals.md](references/appendix-signals.md)（升级信号阈值，含 AI 层）
+- 通用工具：[appendix-glossary.md](references/appendix-glossary.md)（术语对齐）、[appendix-signals.md](references/appendix-signals.md)（升级信号阈值，含 AI 层）、[appendix-reflexes.md](references/appendix-reflexes.md)（条件反射自查卡，决策前扫一遍）
 
 ## 架构模板
 
