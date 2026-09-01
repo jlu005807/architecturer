@@ -23,6 +23,8 @@
 | 11 | [11-data-consistency-engineering.md](11-data-consistency-engineering.md) | 数据一致性工程：没有跨服务事务怎么把数据弄对 | 2PC 代价、Saga（补偿≠回滚/编排 vs 编舞）、双写→Outbox（at-least-once+幂等）、幂等三件套、事件溯源、CQRS、expand-contract 契约演进、DoorDash Cadence 案例 |
 | 12 | [12-resilience-engineering.md](12-resilience-engineering.md) | 为失败而设计：韧性工程 | MTBF→MTTR 思维翻转、级联失败三放大器、爆炸半径（舱壁/cell/shuffle sharding）、熔断/超时预算/降载、退避+抖动重试、优雅降级、SLI/SLO/SLA 与错误预算、混沌工程、三大真实事故案例 |
 | 13 | [13-scaling-mechanics.md](13-scaling-mechanics.md) | 规模化的力学：加机器不是免费的 | 垂直 vs 水平/无状态好扩、范围 vs 哈希分片与一致性哈希+虚拟节点、热点（把一个点变成一片）、多级缓存与踩踏、多区域多活、尾延迟扇出放大与对冲请求、排队论/USL、Discord/Twitter/Tail at Scale 案例 |
+| 14 | [14-evolving-and-splitting-systems.md](14-evolving-and-splitting-systems.md) | 演进与拆分大型系统：给飞行中的飞机换引擎 | 大重写为何注定失败、绞杀者模式、抽象分支、并行运行/影子流量（Scientist）、零停机数据迁移五步、拆单体（限界上下文/防腐层/模块化单体先行）、适应度函数、五大真实案例 |
+| 15 | [15-organization-as-architecture.md](15-organization-as-architecture.md) | 组织即架构：你的系统会长得像你的组织 | 康威定律扶正为主梁、逆康威操作、认知负荷与 Team Topologies 四类团队、平台工程/黄金路径、微服务=组织扩展手段、两个披萨+接口即契约、自建vs采购、三大真实案例 |
 
 > **01–09 是入门篇**（看懂系统、从 0 设计中小系统）；**10 起是进阶篇**（系统做大做关键后才露牙的硬骨头：分布式、失败、规模、演进和组织）。
 
@@ -32,7 +34,7 @@
 |------|------|
 | [appendix-glossary.md](appendix-glossary.md) | 架构术语表：一句话直觉 + 指向讲透它的章节，按规模/数据/扩展/模式/可靠性/流程分类 |
 | [appendix-signals.md](appendix-signals.md) | 升级信号速查：数据层/体验层/稳定性/组织效率四层量化触发信号 + 破解手段 |
-| [appendix-reflexes.md](appendix-reflexes.md) | 条件反射自查卡：触发场景→条件反射（估算选型/数据一致性/扩展韧性/沟通决策四组 + 决策前三问），源自十轮拷问复盘 |
+| [appendix-reflexes.md](appendix-reflexes.md) | 条件反射自查卡：触发场景→条件反射（估算选型/数据一致性/扩展韧性/沟通决策四组 + 决策前三问），源自十六轮拷问复盘 |
 
 ## 领域速查（教练阶段 5 按需加载）
 

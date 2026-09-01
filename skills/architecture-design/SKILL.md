@@ -226,14 +226,16 @@ description: >-
 
 详见 [08 · ADR 与演进](references/08-architecture-decision-records.md)：接缝设计、技术债纪律（有意识借+记账+排期还）、康威定律、升级判断两把尺子。升级信号见 [附录](references/appendix-signals.md)。
 
-当用户需要引导式架构设计时，按 [COACHING.md](COACHING.md) 的七阶段流程和七条铁律执行。
-核心：**先问后答，一次 1-3 问，每个选型追问「为什么、代价是什么」。**
+- **演进手艺（进阶篇）**：不推倒只渐进（重写=对移动靶射击+隐性知识清零）；外围换用**绞杀者**（门面拦截逐块切流）、内部换用**抽象分支**（主干可发布，禁长命分支）；切前用**并行运行**拿真实流量比对建信心；数据迁移五步（双写→回填→影子校验→切读→清理）旧存储权威到最后一刻；拆单体先**模块化单体**把缝划对再按需抽服务；**适应度函数**进 CI 防边界腐化。详见 [14 章](references/14-evolving-and-splitting-systems.md)
+- **组织即架构（进阶篇）**：技术边界要有组织边界撑腰才立得住（解不干净的耦合先看背后是不是同一拨人）；**逆康威**——想要什么架构先组织成什么团队（按业务垂直切，别按职能分）；拆分依据是**认知负荷**溢出而非技术图谱；微服务首先是**组织扩展手段**（团队没互相阻塞就别拆）；大组织靠**两个披萨团队+稳定契约**扩展；平台工程是铺路不是设卡。详见 [15 章](references/15-organization-as-architecture.md)
+
+引导式架构设计按 [COACHING.md](COACHING.md) 的七阶段流程和铁律执行，核心：**先问后答，一次 1-3 问，每个选型追问「为什么、代价是什么」。**
 
 ## 参考资料
 
 深度分析时，阅读 [references/INDEX.md](references/INDEX.md) 获取完整目录。
 
-- 教程章节：`references/01~07`（按编号系统学习）
+- 教程章节：`references/01~15`（按编号系统学习；01–09 入门篇，10–15 进阶篇）
 - 领域速查：`references/domains/web-and-product` `transactional` `ai-native` `realtime-and-storage` `embedded-industrial` `agent-and-org`（按系统类型按需读取）
 - 通用工具：[appendix-glossary.md](references/appendix-glossary.md)（术语对齐）、[appendix-signals.md](references/appendix-signals.md)（升级信号阈值，含 AI 层）、[appendix-reflexes.md](references/appendix-reflexes.md)（条件反射自查卡，决策前扫一遍）
 

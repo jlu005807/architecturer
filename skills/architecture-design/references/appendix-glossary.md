@@ -62,6 +62,10 @@
 | 扇出（Fan-out） | 一件事触发很多下游——推模型（写时扇出）vs 拉模型（读时聚合）。 | [社交信息流](domains/web-and-product.md) |
 | 倒排索引 | 把「文档→词」翻转成「词→文档列表」，全文检索的根基。 | [搜索引擎](domains/web-and-product.md) |
 | ANN（近似最近邻） | 用一点精度换巨大速度，在海量向量里快速找「最相似」。 | [向量数据库](domains/ai-native.md) |
+| 绞杀者模式（Strangler Fig） | 在旧系统外围加一层门面/路由，逐块把流量引向新实现，旧的自然枯死——不推倒、只渐进。 | [14 演进与拆分](14-evolving-and-splitting-systems.md) |
+| 抽象分支（Branch by Abstraction） | 立一层抽象当「插座」，新旧实现并存靠开关切换，全程在主干可发布——替代长命特性分支。 | [14](14-evolving-and-splitting-systems.md) |
+| 防腐层（ACL） | 新服务与旧系统之间的「翻译+隔离」墙，旧模型的腐烂不会渗进新服务。 | [14](14-evolving-and-splitting-systems.md) |
+| 模块化单体 | 一个部署单元但内部有强制模块边界——先把缝划对划稳，再按需抽服务；服务数量不是目标。 | [14](14-evolving-and-splitting-systems.md) |
 
 ## 可靠性与运维
 
@@ -89,5 +93,13 @@
 | 取舍（Trade-off） | 任何决策都是「用 A 换 B」；没有银弹。 | [02](02-systematic-architecture-judgment.md) |
 | ADR | 架构决策记录：用一页纸记下「为什么这么决定、放弃了什么」。 | [08 ADR](08-architecture-decision-records.md) |
 | 技术债 | 为「现在更快」有意识地选的权宜方案——关键是记账、按计划还。 | [08](08-architecture-decision-records.md) |
-| 康威定律 | 系统架构会长得像设计它的组织的沟通结构。 | [08](08-architecture-decision-records.md) |
+| 康威定律 | 系统架构会长得像设计它的组织的沟通结构——组织图是架构图的草稿。 | [08](08-architecture-decision-records.md)、[15 组织即架构](15-organization-as-architecture.md) |
 | C4 模型 | 像地图缩放一样分四层画架构图：Context→Container→Component→Code。 | [03 画架构图](03-c4-model-architecture-diagrams.md) |
+| 并行运行 / 影子流量 | 新旧实现对同一批真实流量同时跑，旧的给用户、新的只比对——用数据当裁判，不用自信。 | [14](14-evolving-and-splitting-systems.md) |
+| 适应度函数 | 把架构约束写成会失败、能卡 CI 的自动化测试——架构的免疫系统，长大但不腐化。 | [14](14-evolving-and-splitting-systems.md) |
+| 逆康威操作 | 想要什么架构，就先把团队组织成那个形状——让组织倒逼出架构。 | [15 组织即架构](15-organization-as-architecture.md) |
+| 认知负荷 | 一个团队能装进脑子的复杂度有硬上限；桶溢出（疲于救火、说不清整体）才是该拆的信号。 | [15](15-organization-as-architecture.md) |
+| Team Topologies 四类团队 | 流式对齐（主角，端到端包一条业务流）+ 平台/赋能/复杂子系统（都为给它减负）。 | [15](15-organization-as-architecture.md) |
+| 平台工程 / 黄金路径 | 把 CI/CD、监控等偶然复杂度铺成自助的「铺好的路」——靠好用赢得采用，不靠审批强制。 | [15](15-organization-as-architecture.md) |
+| 两个披萨团队 | 团队小到两个披萨能喂饱（6–10 人）——内部沟通 O(n²) 可控，自治的前提。 | [15](15-organization-as-architecture.md) |
+| 接口即契约 | 跨团队只走稳定接口（版本化/向后兼容/契约测试）；契约越稳，团队越敢独立演进。 | [15](15-organization-as-architecture.md) |
