@@ -25,8 +25,10 @@
 | 13 | [13-scaling-mechanics.md](13-scaling-mechanics.md) | 规模化的力学：加机器不是免费的 | 垂直 vs 水平/无状态好扩、范围 vs 哈希分片与一致性哈希+虚拟节点、热点（把一个点变成一片）、多级缓存与踩踏、多区域多活、尾延迟扇出放大与对冲请求、排队论/USL、Discord/Twitter/Tail at Scale 案例 |
 | 14 | [14-evolving-and-splitting-systems.md](14-evolving-and-splitting-systems.md) | 演进与拆分大型系统：给飞行中的飞机换引擎 | 大重写为何注定失败、绞杀者模式、抽象分支、并行运行/影子流量（Scientist）、零停机数据迁移五步、拆单体（限界上下文/防腐层/模块化单体先行）、适应度函数、五大真实案例 |
 | 15 | [15-organization-as-architecture.md](15-organization-as-architecture.md) | 组织即架构：你的系统会长得像你的组织 | 康威定律扶正为主梁、逆康威操作、认知负荷与 Team Topologies 四类团队、平台工程/黄金路径、微服务=组织扩展手段、两个披萨+接口即契约、自建vs采购、三大真实案例 |
+| 16 | [16-security-and-multi-tenancy.md](16-security-and-multi-tenancy.md) | 安全与多租户架构：把安全当结构，而非补丁 | STRIDE 威胁建模/信任边界、纵深防御+零信任（BeyondCorp）、爆炸半径与隔离、多租户隔离谱系（池化/桥接/竖井+行级→物理级）、密钥三铁律、供应链安全（xz/Log4Shell/SolarWinds/Capital One）、合规即架构、slopsquatting+提示注入 |
+| 17 | [17-llm-era-architecture-judgment.md](17-llm-era-architecture-judgment.md) | 大模型时代的架构判断：vibe coding 时代，你靠什么不可替代 | 两个转变（实现廉价/新物种）、vibe coding 放大架构错误、非确定性→评测驱动、上下文工程=新内存层级、成本/延迟/质量三角、Agentic 系统=进阶篇总和、什么没变；进阶篇收官 capstone |
 
-> **01–09 是入门篇**（看懂系统、从 0 设计中小系统）；**10 起是进阶篇**（系统做大做关键后才露牙的硬骨头：分布式、失败、规模、演进和组织）。
+> **01–09 是入门篇**（看懂系统、从 0 设计中小系统）；**10 起是进阶篇**（系统做大做关键后才露牙的硬骨头：分布式、失败、规模、演进、组织和安全）。
 
 ## 附录
 
@@ -34,7 +36,7 @@
 |------|------|
 | [appendix-glossary.md](appendix-glossary.md) | 架构术语表：一句话直觉 + 指向讲透它的章节，按规模/数据/扩展/模式/可靠性/流程分类 |
 | [appendix-signals.md](appendix-signals.md) | 升级信号速查：数据层/体验层/稳定性/组织效率四层量化触发信号 + 破解手段 |
-| [appendix-reflexes.md](appendix-reflexes.md) | 条件反射自查卡：触发场景→条件反射（估算选型/数据一致性/扩展韧性/沟通决策四组 + 决策前三问），源自十六轮拷问复盘 |
+| [appendix-reflexes.md](appendix-reflexes.md) | 条件反射自查卡：触发场景→条件反射（估算选型/数据一致性/扩展韧性/安全信任边界/AI 时代判断/沟通决策六组 + 决策前三问，58 条），源自十八轮拷问复盘 |
 
 ## 领域速查（教练阶段 5 按需加载）
 

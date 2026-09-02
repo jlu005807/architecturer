@@ -145,7 +145,7 @@ description: >-
 2. **每个选型都追问「为什么是它？代价是什么？」**——说不出代价 = 没想清楚
 3. **允许说「不知道」，不许编数字**——编出来的数字会被当成决策依据
 
-> 详细的教练流程与铁律见 [COACHING.md](COACHING.md)。你的价值不在于给答案，而在于问对问题。
+> 详细的教练流程与铁律见 [COACHING.md](COACHING.md)：按七阶段流程执行，先问后答，一次 1-3 问。你的价值不在于给答案，而在于问对问题。
 
 ## 常见陷阱
 
@@ -228,14 +228,14 @@ description: >-
 
 - **演进手艺（进阶篇）**：不推倒只渐进（重写=对移动靶射击+隐性知识清零）；外围换用**绞杀者**（门面拦截逐块切流）、内部换用**抽象分支**（主干可发布，禁长命分支）；切前用**并行运行**拿真实流量比对建信心；数据迁移五步（双写→回填→影子校验→切读→清理）旧存储权威到最后一刻；拆单体先**模块化单体**把缝划对再按需抽服务；**适应度函数**进 CI 防边界腐化。详见 [14 章](references/14-evolving-and-splitting-systems.md)
 - **组织即架构（进阶篇）**：技术边界要有组织边界撑腰才立得住（解不干净的耦合先看背后是不是同一拨人）；**逆康威**——想要什么架构先组织成什么团队（按业务垂直切，别按职能分）；拆分依据是**认知负荷**溢出而非技术图谱；微服务首先是**组织扩展手段**（团队没互相阻塞就别拆）；大组织靠**两个披萨团队+稳定契约**扩展；平台工程是铺路不是设卡。详见 [15 章](references/15-organization-as-architecture.md)
-
-引导式架构设计按 [COACHING.md](COACHING.md) 的七阶段流程和铁律执行，核心：**先问后答，一次 1-3 问，每个选型追问「为什么、代价是什么」。**
+- **安全与多租户（进阶篇）**：安全是结构不是补丁（对每道**信任边界**跑 STRIDE）；零信任+纵深防御，爆炸半径当一等设计目标；多租户隔离靠**平台层强制**而非开发者记得带 tenant_id（串扰是头号事故）；secrets 绝不进代码库/日志；你没写的 95% 代码（供应链）才是最大攻击面；合规是结构性约束事后加不上。详见 [16 章](references/16-security-and-multi-tenancy.md)
+- **大模型时代的架构判断（收官）**：实现越来越廉价，判断越来越值钱——vibe 出草稿、判断收口（能跑 demo ≠ 有超时/幂等/降级/防注入）；LLM 新约束：非确定性→评测驱动、上下文工程=新内存层级（长上下文 vs RAG vs 微调）、成本/延迟/质量三角；能用工作流就别上自主 Agent（自主性越强，进阶篇硬骨头叠加越狠）。详见 [17 章](references/17-llm-era-architecture-judgment.md)
 
 ## 参考资料
 
 深度分析时，阅读 [references/INDEX.md](references/INDEX.md) 获取完整目录。
 
-- 教程章节：`references/01~15`（按编号系统学习；01–09 入门篇，10–15 进阶篇）
+- 教程章节：`references/01~17`（按编号系统学习；01–09 入门篇，10–17 进阶篇，17 为收官 capstone）
 - 领域速查：`references/domains/web-and-product` `transactional` `ai-native` `realtime-and-storage` `embedded-industrial` `agent-and-org`（按系统类型按需读取）
 - 通用工具：[appendix-glossary.md](references/appendix-glossary.md)（术语对齐）、[appendix-signals.md](references/appendix-signals.md)（升级信号阈值，含 AI 层）、[appendix-reflexes.md](references/appendix-reflexes.md)（条件反射自查卡，决策前扫一遍）
 

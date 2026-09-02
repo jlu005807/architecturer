@@ -78,12 +78,38 @@
 | MTBF / MTTR | 多久坏一次 / 坏了多久能恢复——可用性的杠杆绝大多数压在 MTTR 那一端。 | [12 韧性工程](12-resilience-engineering.md) |
 | 级联失败 | 一个慢依赖顺着调用链拖垮全站；三个放大器：资源耗尽、重试风暴、超时堆叠。慢比宕机更致命。 | [12](12-resilience-engineering.md) |
 | 熔断器 | 保险丝：失败率超阈值就跳闸快速失败，半开态先放探子试水再恢复。 | [12](12-resilience-engineering.md) |
-| 舱壁 / 爆炸半径 | 把资源池切开，故障不串味；最该隔开的是核心与非核心。 | [12](12-resilience-engineering.md) |
+| 舱壁 / 爆炸半径 | 把资源池切开，故障不串味；最该隔开的是核心与非核心。故障视角见 12，安全视角（一处被攻破只炸一舱）见 16。 | [12](12-resilience-engineering.md)、[16 安全与多租户](16-security-and-multi-tenancy.md) |
 | 降载 / 背压 | 扛不住时主动丢一部分保整体——优雅地拒绝，远胜假装全扛然后一起崩。 | [12](12-resilience-engineering.md) |
 | 优雅降级 | 提前把功能分「掉了会死/能忍」，事故时一键关非核心保核心——坏一部分远好过全挂。 | [12](12-resilience-engineering.md) |
 | 指数退避 + 抖动 | 聪明重试的两半：越等越久 + 随机打散同步重试；再加预算与幂等前提，四样缺一不可。 | [12](12-resilience-engineering.md) |
 | 混沌工程 | 别假设，去证明：主动可控地注入故障，提前暴露只有出事才会暴露的脆弱点。 | [12](12-resilience-engineering.md) |
 | 部分失败 / 灰色失败 | 有的成了有的败了有的不知死活；你分不清「它死了」还是「它只是慢」，超时只是猜测。 | [10](10-distributed-systems-hard-truths.md) |
+
+## 安全与合规
+
+| 术语 | 一句话直觉 | 讲透它的地方 |
+|------|-----------|-------------|
+| 威胁建模 / STRIDE | 对着数据流图对每道边界问六问：假冒/篡改/抵赖/泄露/拒服/提权——系统性想坏事，而不是想起来就打补丁。 | [16 安全与多租户](16-security-and-multi-tenancy.md) |
+| 信任边界 | 信任级别变化的那道线（公网→系统、服务→数据）；坏事几乎总发生在边界上，防御按边界投放。 | [16](16-security-and-multi-tenancy.md) |
+| 纵深防御 / 零信任 | 层层设防破一层还有下一层；信任不绑网络位置（never trust, always verify），每次访问重新挣得。 | [16](16-security-and-multi-tenancy.md) |
+| 多租户隔离谱系 | 池化→桥接→竖井，成本↔隔离强度；数据从行级→Schema→库级→物理级由软到硬。 | [16](16-security-and-multi-tenancy.md) |
+| 租户串扰 | A 租户看到 B 租户的数据——多租户头号事故；行级隔离全靠每条 SQL 带 tenant_id，必须平台层强制注入而非靠人自觉。 | [16](16-security-and-multi-tenancy.md) |
+| secrets 三铁律 | 集中保管、定期轮换、最小暴露；任何会被 grep/commit/打进日志的明文都该假设已泄露。 | [16](16-security-and-multi-tenancy.md) |
+| 供应链安全 / SBOM | 你只写了 5% 的代码，信任却是传递的；锁版本+物料清单+最小化依赖+可复现构建。 | [16](16-security-and-multi-tenancy.md) |
+| 合规即架构 | 数据驻留/被遗忘权/审计留痕是结构性约束，事后加不上只能重做——从第一张图就织进结构。 | [16](16-security-and-multi-tenancy.md) |
+| slopsquatting | 抢注 AI 幻觉出的假包名投毒——AI 生成代码里约两成含幻觉包名，推荐的包先核实再进 lockfile。 | [16](16-security-and-multi-tenancy.md) |
+| 提示注入 | 恶意文本藏在网页/邮件/工具返回里被模型当指令照做——堵不死只能层层防，硬约束落在权限与边界而非提示词。 | [16](16-security-and-multi-tenancy.md) |
+
+## AI 时代判断
+
+| 术语 | 一句话直觉 | 讲透它的地方 |
+|------|-----------|-------------|
+| vibe coding | 特指不审查就接受 AI 产出——玩具原型绝妙，推上生产等于把没读过的房子交给人住；瓶颈从「写」移到「想清楚」。 | [17 大模型时代的架构判断](17-llm-era-architecture-judgment.md) |
+| 非确定性 / 评测驱动 | 同样输入不保证同样输出——assert 换成评测集+评分看质量分布，进 CI 防退化；护栏人审+可回退配套。 | [17](17-llm-era-architecture-judgment.md) |
+| 上下文工程 | 把上下文窗口当新内存层级管：窗口装恰好、RAG 按需取、长期记忆落盘；长上下文 vs RAG vs 微调是取舍。 | [17](17-llm-era-architecture-judgment.md) |
+| 成本/延迟/质量三角 | LLM 系统新质量属性：强模型贵慢、弱模型快糙，永远在三角里选位置；token 成本是一等公民。 | [17](17-llm-era-architecture-judgment.md) |
+| 模型路由 / 预算上限 | 简单任务小模型、难任务大模型；agent 必须有步数/成本/超时上限——自主性越强越要装刹车。 | [17](17-llm-era-architecture-judgment.md) |
+| 工作流 vs 自主 Agent | 能用确定的工作流解决就别上自主 Agent——Agentic 系统是进阶篇硬骨头的总和，不是捷径。 | [17](17-llm-era-architecture-judgment.md) |
 
 ## 流程与演进
 
