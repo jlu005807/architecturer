@@ -36,7 +36,7 @@
 |------|------|
 | [appendix-glossary.md](appendix-glossary.md) | 架构术语表：一句话直觉 + 指向讲透它的章节，按规模/数据/扩展/模式/可靠性/流程分类 |
 | [appendix-signals.md](appendix-signals.md) | 升级信号速查：数据层/体验层/稳定性/组织效率四层量化触发信号 + 破解手段 |
-| [appendix-reflexes.md](appendix-reflexes.md) | 条件反射自查卡：触发场景→条件反射（估算选型/数据一致性/扩展韧性/安全信任边界/AI 时代判断/沟通决策六组 + 决策前三问，58 条），源自十八轮拷问复盘 |
+| [appendix-reflexes.md](appendix-reflexes.md) | 条件反射自查卡：触发场景→条件反射（估算选型/数据一致性/扩展韧性/安全信任边界/AI 时代判断/沟通决策六组 + 决策前三问，60 条），源自十九轮拷问复盘 |
 
 ## 领域速查（教练阶段 5 按需加载）
 
